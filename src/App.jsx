@@ -19,12 +19,11 @@ function App() {
     setError(null)
 
     try {
-      // تعديل الرابط لـ https لضمان الأمان ومطابقة الفانكشن التانية
       const Response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=3`)
       if (!Response.ok) {
         setError("City not found or API error")
-        setLoading(false) // تصحيح: إيقاف الـ loading
-        return // تصحيح: إيقاف الدالة فوراً من التكملة لـ json()
+        setLoading(false)
+        return
       }
       const data = await Response.json()
       console.log(data)
